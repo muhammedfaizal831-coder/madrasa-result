@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Madrasa Result Portal</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f2f7f2;
+        }
+        header {
+            background: #0b6e4f;
+            color: white;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #0b6e4f;
+            color: white;
+            border: none;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Madrasa Result Portal</h1>
+    <p>Check Your Exam Result</p>
+</header>
+
+<br>
+
+<input type="text" id="rollInput" placeholder="Enter Roll Number">
+<button onclick="checkResult()">Search</button>
+
+<div id="result"></div>
+
+<script>
+    // ✏️ EDIT STUDENT RESULTS HERE
+    const results = [
+        {roll: "101", name: "Ahmed Ali", class: "Hifz", marks: "450"},
+        {roll: "102", name: "Usman Khan", class: "Alimiyyah", marks: "420"},
+        {roll: "103", name: "Fatima Noor", class: "Nazra", marks: "470"}
+    ];
+
+    function checkResult() {
+        const roll = document.getElementById("rollInput").value;
+        const student = results.find(s => s.roll === roll);
+
+        if(student) {
+            document.getElementById("result").innerHTML = `
+                <h3>Result Found</h3>
+                <p><b>Name:</b> ${student.name}</p>
+                <p><b>Class:</b> ${student.class}</p>
+                <p><b>Total Marks:</b> ${student.marks}</p>
+            `;
+        } else {
+            document.getElementById("result").innerHTML =
+                "<p style='color:red;'>Result Not Found</p>";
+        }
+    }
+</script>
+
+</body>
+</html>
